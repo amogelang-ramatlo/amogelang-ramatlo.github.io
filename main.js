@@ -94,10 +94,36 @@ class TypewriterEffect {
 // 3. PROJECTS MODULE
 const ProjectManager = {
     data: [
-        { id: 0, title: "AI Resume Builder", desc: "A tool that generates tailored resumes using AI based on job descriptions.", stack: ["React", "Node.js", "OpenAI API"], status: "Completed", type: "AI Tool, Web App", img: "https://via.placeholder.com/600x400/1a1a2e/ffffff?text=AI+Resume+Builder", demoLink: "#", githubLink: "#" },
-        { id: 1, title: "Finance Tracker Dashboard", desc: "A personal finance dashboard that visualizes spending habits and budgets.", stack: ["Next.js", "Chart.js", "PostgreSQL"], status: "Completed", type: "Data Dashboard", img: "https://via.placeholder.com/600x400/16213e/ffffff?text=Finance+Tracker", demoLink: "#", githubLink: "#" },
-        { id: 2, title: "Dev Portfolio Template", desc: "A customizable portfolio template designed specifically for developers.", stack: ["React", "Tailwind CSS"], status: "Completed", type: "Frontend Project", img: "https://via.placeholder.com/600x400/0f3460/ffffff?text=Portfolio+Template", demoLink: "#", githubLink: "#" },
-        { id: 3, title: "Smart Task Planner", desc: "A productivity tool that prioritizes tasks using simple AI-based scoring.", stack: ["Vue.js", "Firebase"], status: "In Progress", type: "Productivity App", img: "https://via.placeholder.com/600x400/e94560/ffffff?text=Task+Planner", demoLink: "#", githubLink: "#" },
+        { 
+            id: 0, 
+            title: "Professional Portfolio Site", 
+            desc: `A custom-built, responsive web application designed to showcase quantitative research and data science 
+            projects. Features a modular JavaScript-driven project filtering system, glass-morphism UI design, and secure 
+            serverless contact integration via Web3Forms.`,
+            stack: ["HTML5", "CSS3", "JavaScript", "Bootstrap 5", "Web3Forms"], 
+            status: "Live", 
+            type: "Web Engineering / UI Design",
+            img: "images/preview/home-preview.gif",
+            imgThumb: "images/projects/profile-thumb.jpg",
+            demoLink: "#home",
+            githubLink: "https://github.com/amogelang-ramatlo/amogelang-ramatlo.github.io"
+        },
+        {
+            id: 1, 
+            title: "COVID-19 Explorer",
+            desc: `An interactive R Shiny dashboard and animated visualisation suite. Developed a dynamic global tracking system 
+            to reveal pandemic spread patterns, featuring a custom-built explorer for interrogating country-specific trends in 
+            confirmed cases, recoveries, and deaths.`,
+            stack: ["R", "Shiny", "Tidyverse"],
+            status: "Completed",
+            type: "Data Science & Visualisation",
+            img: "images/projects/covid-analysis-large.png",
+            imgThumb: "images/projects/covid-analysis-thumb.png",
+            demoLink: "https://amogelang-ramatlo.shinyapps.io/covid-19-explorer/", 
+            githubLink: "#"
+        },
+        { id: 2, title: "Finance Tracker Dashboard", desc: "A personal finance dashboard that visualizes spending habits and budgets.", stack: ["Next.js", "Chart.js", "PostgreSQL"], status: "Completed", type: "Data Dashboard", img: "https://via.placeholder.com/600x400/16213e/ffffff?text=Finance+Tracker", demoLink: "#", githubLink: "#" },
+        { id: 3, title: "Dev Portfolio Template", desc: "A customizable portfolio template designed specifically for developers.", stack: ["React", "Tailwind CSS"], status: "Completed", type: "Frontend Project", img: "https://via.placeholder.com/600x400/0f3460/ffffff?text=Portfolio+Template", demoLink: "#", githubLink: "#" },
         { id: 4, title: "Weather Insights API", desc: "A backend API that aggregates weather data from multiple sources.", stack: ["Node.js", "Express", "MongoDB"], status: "Completed", type: "Backend Service", img: "https://via.placeholder.com/600x400/2a3d66/ffffff?text=Weather+API", demoLink: "#", githubLink: "#" },
         { id: 5, title: "Team Collaboration Board", desc: "A kanban-style board for teams to track tasks and manage workflows.", stack: ["React", "WebSockets", "Redis"], status: "In Progress", type: "Web App", img: "https://via.placeholder.com/600x400/53354a/ffffff?text=Collab+Board", demoLink: "#", githubLink: "#" }
     ],
@@ -128,7 +154,7 @@ const ProjectManager = {
         // Render Selector Tiles
         this.selectorList.innerHTML = this.data.map(p => `
             <div class="project-tile" data-id="${p.id}">
-                <img src="${p.img}" alt="${p.title}" class="tile-img">
+                <img src="${p.imgThumb}" alt="${p.title}" class="tile-img">
                 <div class="tile-info">
                     <h5>${p.title}</h5>
                     <div>${this.renderBadges(p.stack.slice(0,2))}</div>
@@ -168,7 +194,7 @@ const ProjectManager = {
                 <h3 style="color: var(--primary-color);">${p.title}</h3>
                 ${this.renderStatus(p.status)}
             </div>
-            <p class="text-muted mb-3">${p.type}</p>
+            <p class="text-muted mb-3" style="color: white !important;">${p.type}</p>
             <div class="mb-3">${this.renderBadges(p.stack)}</div>
             <p style="font-style: italic; opacity: 0.9;">${p.desc}</p>
             <div class="action-btns">
@@ -264,7 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
         VANTA.NET({
             el: "#vanta-bg",
             mouseControls: false,
-            touchControls: true,
+            touchControls: false,
             scale: 1.0,
             scaleMobile: 1.0,
             color: 0x202020,

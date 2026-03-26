@@ -104,6 +104,7 @@ const ProjectManager = {
             status: "Live", 
             type: "Web Engineering / UI Design",
             img: "images/preview/home-preview.gif",
+            imgThumb: "images/projects/profile-thumb.jpg",
             demoLink: "#home",
             githubLink: "https://github.com/amogelang-ramatlo/amogelang-ramatlo.github.io"
         },
@@ -116,7 +117,8 @@ const ProjectManager = {
             stack: ["R", "Shiny", "Tidyverse"],
             status: "Completed",
             type: "Data Science & Visualisation",
-            img: "images/projects/covid-analysis-thumb1.png",
+            img: "images/projects/covid-analysis-large.png",
+            imgThumb: "images/projects/covid-analysis-thumb.png",
             demoLink: "https://amogelang-ramatlo.shinyapps.io/covid-19-explorer/", 
             githubLink: "#"
         },
@@ -152,7 +154,7 @@ const ProjectManager = {
         // Render Selector Tiles
         this.selectorList.innerHTML = this.data.map(p => `
             <div class="project-tile" data-id="${p.id}">
-                <img src="${p.img}" alt="${p.title}" class="tile-img">
+                <img src="${p.imgThumb}" alt="${p.title}" class="tile-img">
                 <div class="tile-info">
                     <h5>${p.title}</h5>
                     <div>${this.renderBadges(p.stack.slice(0,2))}</div>

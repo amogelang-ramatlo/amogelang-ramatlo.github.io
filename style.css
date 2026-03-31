@@ -1284,8 +1284,6 @@ MOBILE REFINEMENTS (Responsive)
         border-left: none !important;
         border-right: none !important;
         border-bottom: none !important;
-
-
         margin: 70px 0 0 0 !important; 
 
         /* FIX: Stretch to full screen height minus the header */
@@ -1298,6 +1296,12 @@ MOBILE REFINEMENTS (Responsive)
         padding: 1.5rem 1rem !important;
     }
 
+    #contact .glass-box {
+        min-height: calc(100svh - 70px) !important;
+        padding-bottom: 100px !important; 
+        border-bottom: none !important;
+    }
+    
     /* This ensures the contact form/about content fills the space 
        but allows scrolling if the content is longer than the screen */
     .page-section {

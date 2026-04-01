@@ -106,7 +106,7 @@ const ProjectManager = {
             type: "Web Engineering / UI Design",
             img: "images/preview/home-preview.gif",
             imgThumb: "images/projects/profile-thumb.jpg",
-            demoLink: "#home",
+            demoLink: "#",
             githubLink: "https://github.com/amogelang-ramatlo/amogelang-ramatlo.github.io"
         },
         {
@@ -165,6 +165,11 @@ const ProjectManager = {
 
     renderStatus: (status) => `<span class="status-badge ${status === 'Completed' ? 'status-completed' : 'status-progress'}">${status}</span>`,
 
+    isCurrentPage(link) {
+        // Returns true if the link is '#' or matches the current URL
+        return link === "#" || link === window.location.href || link === window.location.origin + window.location.pathname;
+    },
+
     renderAll() {
         // Render Selector Tiles
         this.selectorList.innerHTML = this.data.map(p => `
@@ -195,10 +200,16 @@ const ProjectManager = {
                                 ${this.renderBadges(p.stack.slice(0, 3))} 
                             </div>
                             <div class="action-btns">
-                                <a href="${p.demoLink}" target="_blank" class="btn-project">
-                                    <i class="bx ${p.id === 2 ? 'bx-file' : 'bx-link-external'}"></i> 
-                                    ${p.id === 2 ? 'Report' : 'Live'}
-                                </a>
+                                ${this.isCurrentPage(p.demoLink) ? `
+                                    <span class="btn-project btn-disabled" data-tooltip="You are currently viewing this project">
+                                        <i class="bx bx-check-circle"></i> Current Site
+                                    </span>
+                                ` : `
+                                    <a href="${p.demoLink}" target="_blank" class="btn-project">
+                                        <i class="bx ${p.id === 2 ? 'bx-file' : 'bx-link-external'}"></i> 
+                                        ${p.id === 2 ? 'Report' : 'Live'}
+                                    </a>
+                                `}
                                 <a href="${p.githubLink}" target="_blank" class="btn-project">
                                     <i class="bx bxl-github"></i> GitHub
                                 </a>
@@ -227,11 +238,19 @@ const ProjectManager = {
             <div class="mb-3">${this.renderBadges(p.stack)}</div>
             <p style="font-style: italic; opacity: 0.9;">${p.desc}</p>
             <div class="action-btns">
-                <a href="${p.demoLink}" target="_blank" class="btn-project">
-                    <i class="bx ${p.id === 2 ? 'bx-file' : 'bx-link-external'}"></i>
-                    ${p.id === 2 ? 'View Report' : 'Live Demo'}
+                ${this.isCurrentPage(p.demoLink) ? `
+                    <span class="btn-project btn-disabled" data-tooltip="You are currently viewing this project">
+                        <i class="bx bx-check-circle"></i> Live Demo
+                    </span>
+                ` : `
+                    <a href="${p.demoLink}" target="_blank" class="btn-project">
+                        <i class="bx ${p.id === 2 ? 'bx-file' : 'bx-link-external'}"></i> 
+                        ${p.id === 2 ? 'Report' : 'Live Demo'}
+                    </a>
+                `}
+                <a href="${p.githubLink}" target="_blank" class="btn-project">
+                    <i class="bx bxl-github"></i> GitHub
                 </a>
-                <a href="${p.githubLink}" target="_blank" class="btn-project"><i class="bx bxl-github"></i> GitHub</a>
             </div>`;
     },
 

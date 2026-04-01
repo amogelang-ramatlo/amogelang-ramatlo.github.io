@@ -871,6 +871,7 @@ PROJECTS: GRID VIEW
     margin: 0 !important; 
     flex: 1;
     display: -webkit-box;
+    line-clamp: 3;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -883,6 +884,7 @@ PROJECTS: GRID VIEW
     margin-bottom: 5px;
     line-height: 1.4;
     display: -webkit-box;
+    line-clamp: 4;
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -915,6 +917,57 @@ PROJECTS: GRID VIEW
     padding: 10px;
     font-size: 0.85rem;
 }
+
+
+
+/*=======================================================================
+PROJECTS: DISABLE BUTTON FOR WEBSITE PROJECT
+=======================================================================*/
+
+/* Disabled Button Styling */
+.btn-project.btn-disabled {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: rgba(255, 255, 255, 0.4) !important;
+    cursor: not-allowed;
+    position: relative; 
+}
+
+.btn-project.btn-disabled i { color: var(--primary-color); }
+
+/* Tooltip Logic */
+.btn-disabled:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 125%; /* Positions above the button */
+    left: 50%;
+    transform: translateX(-35%);
+    background: #333;
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    z-index: 10;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    opacity: 1;
+    pointer-events: none;
+}
+
+/* Tooltip Arrow */
+.btn-disabled:hover::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-40%);
+    border-width: 6px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+    z-index: 10;
+}
+
+
 
 /*=======================================================================
 SKILLS
@@ -1477,4 +1530,9 @@ MOBILE REFINEMENTS (Responsive)
         background: var(--primary-color);
         color: black;
     }
+
+    /* Tooltip Arrow */
+    .btn-disabled:hover::after, .btn-disabled:hover::before { transform: translateX(-30%); }
 }
+
+

@@ -140,53 +140,6 @@ const ProjectManager = {
             imgThumb: "images/projects/medical-costs-thumb.png",
             demoLink: "docs/testing.pdf", 
             githubLink: "#"
-        },
-        { 
-            id: 3, 
-            shortTitle: "Professional Digital Portfolio", 
-            title: "Professional Synthesis: A Responsive Portfolio for Data Science and Quantitive Analyst Workflows",
-            desc: `A custom-built, responsive web application designed to showcase quantitative research and data science 
-            projects. Features a modular JavaScript-driven project filtering system, glass-morphism UI design, and secure 
-            serverless contact integration via Web3Forms.`,
-            stack: ["HTML5", "CSS3", "JavaScript", "Bootstrap 5", "Web3Forms"], 
-            status: "Live", 
-            type: "Web Engineering / UI Design",
-            img: "images/preview/home-preview.gif",
-            imgThumb: "images/projects/profile-thumb.jpg",
-            demoLink: "#home",
-            githubLink: "https://github.com/amogelang-ramatlo/amogelang-ramatlo.github.io"
-        },
-        {
-            id: 4, 
-            shortTitle: "Conoravirus Dashboard",
-            title: "Visualising Coronavirus Dynamics: An Integrated Spatiotemporal Animation and Interactive Shiny Dashboard",
-            desc: `A comprehensive data engineering and visualization project leveraging R to analyze global transmission 
-            patterns. Features a high-fidelity spatiotemporal GIF animation capturing viral spread over time, coupled with a 
-            fully responsive R Shiny application for data interrogation. Includes a journalistic technical brief detailing 
-            macro-scale trends discovered within the 160,000+ observation dataset.`,
-            stack: ["R", "Shiny", "Tidyverse"],
-            status: "Completed",
-            type: "Data Science & Visualisation",
-            img: "images/projects/covid-analysis-large.png",
-            imgThumb: "images/projects/covid-analysis-thumb.png",
-            demoLink: "https://amogelang-ramatlo.shinyapps.io/covid-19-explorer/",
-            githubLink: "#"
-        }, 
-        {
-            id: 5,
-            shortTitle: "Medical Cost Classification",
-            title: "Predictive Modelling of Medical Cost Volatility: A Comparative Study of SVM and Neural Network Architectures",
-            desc: `An advanced classification study focused on predicting medical cost categories from a 1,000-observation dataset. 
-            The project involves a rigorous EDA phase followed by the implementation and hyperparameter tuning of Support Vector 
-            Machines (SVM) and Deep Neural Networks. Model performance was benchmarked using a multi-metric framework including 
-            F1 Score, AUROC, and AUPRC to ensure robust risk stratification.`,
-            stack: ["SVM", "Neural Networks", "LaTeX", "R", "Tidyverse"],
-            status: "Completed",
-            type: "Machine Learning / Statistical Research",
-            img: "images/projects/medical-costs-large.png",
-            imgThumb: "images/projects/medical-costs-thumb.png",
-            demoLink: "docs/testing.pdf", 
-            githubLink: "#"
         }
     ],
 

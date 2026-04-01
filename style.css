@@ -503,7 +503,7 @@ EDUCATION: CERTIFICATION SECTION
 
 /* Image Wrapper for uniform logo heights */
 .card-img-wrapper {
-    height: 90px;
+    height: 160px;
     display: flex;
     align-items: center;
     justify-content: center;

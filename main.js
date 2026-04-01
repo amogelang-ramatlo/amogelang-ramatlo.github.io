@@ -123,7 +123,7 @@ const ProjectManager = {
             img: "images/projects/covid-analysis-large.png",
             imgThumb: "images/projects/covid-analysis-thumb.png",
             demoLink: "https://amogelang-ramatlo.shinyapps.io/covid-19-explorer/",
-            githubLink: "#"
+            githubLink: "https://github.com/amogelang-ramatlo/covid-19-explorer"
         }, 
         {
             id: 2,
@@ -138,8 +138,8 @@ const ProjectManager = {
             type: "Machine Learning / Statistical Research",
             img: "images/projects/medical-costs-large.png",
             imgThumb: "images/projects/medical-costs-thumb.png",
-            demoLink: "docs/testing.pdf", 
-            githubLink: "#"
+            demoLink: "https://github.com/amogelang-ramatlo/med-cost-benchmarking/blob/main/report.pdf", 
+            githubLink: "https://github.com/amogelang-ramatlo/med-cost-benchmarking"
         }
     ],
 

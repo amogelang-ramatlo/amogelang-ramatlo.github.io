@@ -96,7 +96,8 @@ const ProjectManager = {
     data: [
         { 
             id: 0, 
-            title: "Professional Portfolio Site", 
+            shortTitle: "Professional Digital Portfolio", 
+            title: "Professional Synthesis: A Responsive Portfolio for Data Science and Quantitive Analyst Workflows",
             desc: `A custom-built, responsive web application designed to showcase quantitative research and data science 
             projects. Features a modular JavaScript-driven project filtering system, glass-morphism UI design, and secure 
             serverless contact integration via Web3Forms.`,
@@ -110,22 +111,36 @@ const ProjectManager = {
         },
         {
             id: 1, 
-            title: "COVID-19 Explorer",
-            desc: `An interactive R Shiny dashboard and animated visualisation suite. Developed a dynamic global tracking system 
-            to reveal pandemic spread patterns, featuring a custom-built explorer for interrogating country-specific trends in 
-            confirmed cases, recoveries, and deaths.`,
+            shortTitle: "Conoravirus Dashboard",
+            title: "Visualising Coronavirus Dynamics: An Integrated Spatiotemporal Animation and Interactive Shiny Dashboard",
+            desc: `A comprehensive data engineering and visualization project leveraging R to analyze global transmission 
+            patterns. Features a high-fidelity spatiotemporal GIF animation capturing viral spread over time, coupled with a 
+            fully responsive R Shiny application for data interrogation. Includes a journalistic technical brief detailing 
+            macro-scale trends discovered within the 160,000+ observation dataset.`,
             stack: ["R", "Shiny", "Tidyverse"],
             status: "Completed",
             type: "Data Science & Visualisation",
             img: "images/projects/covid-analysis-large.png",
             imgThumb: "images/projects/covid-analysis-thumb.png",
-            demoLink: "https://amogelang-ramatlo.shinyapps.io/covid-19-explorer/", 
+            demoLink: "https://amogelang-ramatlo.shinyapps.io/covid-19-explorer/",
             githubLink: "#"
-        },
-        { id: 2, title: "Finance Tracker Dashboard", desc: "A personal finance dashboard that visualizes spending habits and budgets.", stack: ["Next.js", "Chart.js", "PostgreSQL"], status: "Completed", type: "Data Dashboard", img: "https://via.placeholder.com/600x400/16213e/ffffff?text=Finance+Tracker", demoLink: "#", githubLink: "#" },
-        { id: 3, title: "Dev Portfolio Template", desc: "A customizable portfolio template designed specifically for developers.", stack: ["React", "Tailwind CSS"], status: "Completed", type: "Frontend Project", img: "https://via.placeholder.com/600x400/0f3460/ffffff?text=Portfolio+Template", demoLink: "#", githubLink: "#" },
-        { id: 4, title: "Weather Insights API", desc: "A backend API that aggregates weather data from multiple sources.", stack: ["Node.js", "Express", "MongoDB"], status: "Completed", type: "Backend Service", img: "https://via.placeholder.com/600x400/2a3d66/ffffff?text=Weather+API", demoLink: "#", githubLink: "#" },
-        { id: 5, title: "Team Collaboration Board", desc: "A kanban-style board for teams to track tasks and manage workflows.", stack: ["React", "WebSockets", "Redis"], status: "In Progress", type: "Web App", img: "https://via.placeholder.com/600x400/53354a/ffffff?text=Collab+Board", demoLink: "#", githubLink: "#" }
+        }, 
+        {
+            id: 2,
+            shortTitle: "Medical Cost Classification",
+            title: "Predictive Modelling of Medical Cost Volatility: A Comparative Study of SVM and Neural Network Architectures",
+            desc: `An advanced classification study focused on predicting medical cost categories from a 1,000-observation dataset. 
+            The project involves a rigorous EDA phase followed by the implementation and hyperparameter tuning of Support Vector 
+            Machines (SVM) and Deep Neural Networks. Model performance was benchmarked using a multi-metric framework including 
+            F1 Score, AUROC, and AUPRC to ensure robust risk stratification.`,
+            stack: ["SVM", "Neural Networks", "LaTeX", "R", "Tidyverse"],
+            status: "Completed",
+            type: "Machine Learning / Statistical Research",
+            img: "images/projects/medical-costs-large.png",
+            imgThumb: "images/projects/medical-costs-thumb.png",
+            demoLink: "docs/testing.pdf", 
+            githubLink: "#"
+        }
     ],
 
     init() {
@@ -156,24 +171,38 @@ const ProjectManager = {
             <div class="project-tile" data-id="${p.id}">
                 <img src="${p.imgThumb}" alt="${p.title}" class="tile-img">
                 <div class="tile-info">
-                    <h5>${p.title}</h5>
-                    <div>${this.renderBadges(p.stack.slice(0,2))}</div>
+                    <h5>${p.shortTitle}</h5>
+                    <div class="tile-badges">${this.renderBadges(p.stack.slice(0,2))}</div>
                 </div>
             </div>`).join('');
 
         // Render Grid Cards
         this.gridList.innerHTML = this.data.map(p => `
-            <div class="col-lg-4 col-md-6 col-12">
-                <div class="project-card">
-                    <div class="card-img-wrapper"><img src="${p.img}" alt="${p.title}"></div>
+            <div class="col-lg-4 col-md-6 col-12 mb-4">
+                <div class="project-card"> 
+                    <div class="card-img-wrapper">
+                        <img src="${p.img}" alt="${p.title}" loading="lazy">
+                    </div>
                     <div class="card-body">
-                        <h4 style="color: var(--primary-color);">${p.title}</h4>
-                        <div class="mb-2">${this.renderStatus(p.status)}</div>
-                        <p>${p.desc}</p>
-                        <div class="mb-3 mt-auto">${this.renderBadges(p.stack)}</div>
-                        <div class="action-btns mt-0">
-                            <a href="${p.demoLink}" class="btn-project"><i class="bx bx-link-external"></i></a>
-                            <a href="${p.githubLink}" class="btn-project"><i class="bx bxl-github"></i></a>
+                        <div class="title-status-group">
+                            <h4>${p.title}</h4>
+                            <div class="badge-wrapper">${this.renderStatus(p.status)}</div>
+                            <p class="card-description">${p.desc}</p>
+                        </div>
+                        
+                        <div class="card-footer-content">
+                            <div class="mb-3 tech-badge-container">
+                                ${this.renderBadges(p.stack.slice(0, 3))} 
+                            </div>
+                            <div class="action-btns">
+                                <a href="${p.demoLink}" target="_blank" class="btn-project">
+                                    <i class="bx ${p.id === 2 ? 'bx-file' : 'bx-link-external'}"></i> 
+                                    ${p.id === 2 ? 'Report' : 'Live'}
+                                </a>
+                                <a href="${p.githubLink}" target="_blank" class="btn-project">
+                                    <i class="bx bxl-github"></i> GitHub
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -190,15 +219,18 @@ const ProjectManager = {
 
         this.detailPanel.innerHTML = `
             <img src="${p.img}" alt="${p.title}" class="detail-main-img">
-            <div class="d-flex justify-content-between align-items-start mb-2">
+            <div class="d-flex justify-content-between align-items-start mb-2 title-status-group">
                 <h3 style="color: var(--primary-color);">${p.title}</h3>
-                ${this.renderStatus(p.status)}
+                <div class="badge-wrapper">${this.renderStatus(p.status)}</div>
             </div>
             <p class="text-muted mb-3" style="color: white !important;">${p.type}</p>
             <div class="mb-3">${this.renderBadges(p.stack)}</div>
             <p style="font-style: italic; opacity: 0.9;">${p.desc}</p>
             <div class="action-btns">
-                <a href="${p.demoLink}" target="_blank" class="btn-project"><i class="bx bx-link-external"></i> Live Demo</a>
+                <a href="${p.demoLink}" target="_blank" class="btn-project">
+                    <i class="bx ${p.id === 2 ? 'bx-file' : 'bx-link-external'}"></i>
+                    ${p.id === 2 ? 'View Report' : 'Live Demo'}
+                </a>
                 <a href="${p.githubLink}" target="_blank" class="btn-project"><i class="bx bxl-github"></i> GitHub</a>
             </div>`;
     },
@@ -294,7 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
             scale: 1.0,
             scaleMobile: 1.0,
             color: 0x202020,
-            backgroundColor: 0x070707,
+            backgroundColor: 0x0a0a0a,
             points: 10.0,
             maxDistance: 22.0,
             spacing: 20.0

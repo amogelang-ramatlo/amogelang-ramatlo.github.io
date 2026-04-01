@@ -140,6 +140,53 @@ const ProjectManager = {
             imgThumb: "images/projects/medical-costs-thumb.png",
             demoLink: "docs/testing.pdf", 
             githubLink: "#"
+        },
+        { 
+            id: 3, 
+            shortTitle: "Professional Digital Portfolio", 
+            title: "Professional Synthesis: A Responsive Portfolio for Data Science and Quantitive Analyst Workflows",
+            desc: `A custom-built, responsive web application designed to showcase quantitative research and data science 
+            projects. Features a modular JavaScript-driven project filtering system, glass-morphism UI design, and secure 
+            serverless contact integration via Web3Forms.`,
+            stack: ["HTML5", "CSS3", "JavaScript", "Bootstrap 5", "Web3Forms"], 
+            status: "Live", 
+            type: "Web Engineering / UI Design",
+            img: "images/preview/home-preview.gif",
+            imgThumb: "images/projects/profile-thumb.jpg",
+            demoLink: "#home",
+            githubLink: "https://github.com/amogelang-ramatlo/amogelang-ramatlo.github.io"
+        },
+        {
+            id: 4, 
+            shortTitle: "Conoravirus Dashboard",
+            title: "Visualising Coronavirus Dynamics: An Integrated Spatiotemporal Animation and Interactive Shiny Dashboard",
+            desc: `A comprehensive data engineering and visualization project leveraging R to analyze global transmission 
+            patterns. Features a high-fidelity spatiotemporal GIF animation capturing viral spread over time, coupled with a 
+            fully responsive R Shiny application for data interrogation. Includes a journalistic technical brief detailing 
+            macro-scale trends discovered within the 160,000+ observation dataset.`,
+            stack: ["R", "Shiny", "Tidyverse"],
+            status: "Completed",
+            type: "Data Science & Visualisation",
+            img: "images/projects/covid-analysis-large.png",
+            imgThumb: "images/projects/covid-analysis-thumb.png",
+            demoLink: "https://amogelang-ramatlo.shinyapps.io/covid-19-explorer/",
+            githubLink: "#"
+        }, 
+        {
+            id: 5,
+            shortTitle: "Medical Cost Classification",
+            title: "Predictive Modelling of Medical Cost Volatility: A Comparative Study of SVM and Neural Network Architectures",
+            desc: `An advanced classification study focused on predicting medical cost categories from a 1,000-observation dataset. 
+            The project involves a rigorous EDA phase followed by the implementation and hyperparameter tuning of Support Vector 
+            Machines (SVM) and Deep Neural Networks. Model performance was benchmarked using a multi-metric framework including 
+            F1 Score, AUROC, and AUPRC to ensure robust risk stratification.`,
+            stack: ["SVM", "Neural Networks", "LaTeX", "R", "Tidyverse"],
+            status: "Completed",
+            type: "Machine Learning / Statistical Research",
+            img: "images/projects/medical-costs-large.png",
+            imgThumb: "images/projects/medical-costs-thumb.png",
+            demoLink: "docs/testing.pdf", 
+            githubLink: "#"
         }
     ],
 
@@ -172,24 +219,28 @@ const ProjectManager = {
                 <img src="${p.imgThumb}" alt="${p.title}" class="tile-img">
                 <div class="tile-info">
                     <h5>${p.shortTitle}</h5>
-                    <div>${this.renderBadges(p.stack.slice(0,2))}</div>
+                    <div class="tile-badges">${this.renderBadges(p.stack.slice(0,2))}</div>
                 </div>
             </div>`).join('');
 
         // Render Grid Cards
         this.gridList.innerHTML = this.data.map(p => `
             <div class="col-lg-4 col-md-6 col-12 mb-4">
-                <div class="project-card h-100 d-flex flex-column">
+                <div class="project-card"> 
                     <div class="card-img-wrapper">
-                        <img src="${p.img}" alt="${p.title}">
+                        <img src="${p.img}" alt="${p.title}" loading="lazy">
                     </div>
-                    <div class="card-body d-flex flex-column flex-grow-1">
-                        <h4 style="color: var(--primary-color); font-weight: 600;">${p.title}</h4>
-                        <div class="mb-2">${this.renderStatus(p.status)}</div>
-                        <p class="card-description">${p.desc}</p>
+                    <div class="card-body">
+                        <div class="title-status-group">
+                            <h4>${p.title}</h4>
+                            <div class="badge-wrapper">${this.renderStatus(p.status)}</div>
+                            <p class="card-description">${p.desc}</p>
+                        </div>
                         
-                        <div class="mt-auto">
-                            <div class="mb-3">${this.renderBadges(p.stack)}</div>
+                        <div class="card-footer-content">
+                            <div class="mb-3 tech-badge-container">
+                                ${this.renderBadges(p.stack.slice(0, 3))} 
+                            </div>
                             <div class="action-btns">
                                 <a href="${p.demoLink}" target="_blank" class="btn-project">
                                     <i class="bx ${p.id === 2 ? 'bx-file' : 'bx-link-external'}"></i> 
@@ -215,9 +266,9 @@ const ProjectManager = {
 
         this.detailPanel.innerHTML = `
             <img src="${p.img}" alt="${p.title}" class="detail-main-img">
-            <div class="d-flex justify-content-between align-items-start mb-2">
+            <div class="d-flex justify-content-between align-items-start mb-2 title-status-group">
                 <h3 style="color: var(--primary-color);">${p.title}</h3>
-                ${this.renderStatus(p.status)}
+                <div class="badge-wrapper">${this.renderStatus(p.status)}</div>
             </div>
             <p class="text-muted mb-3" style="color: white !important;">${p.type}</p>
             <div class="mb-3">${this.renderBadges(p.stack)}</div>

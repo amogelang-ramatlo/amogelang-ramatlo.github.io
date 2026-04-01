@@ -54,7 +54,10 @@ HOME PAGE
     margin-bottom: 15px;
 }
 
-#hero-text h1 a { color: var(--primary-color); text-decoration: none; }
+#hero-text h1 a { 
+    color: var(--primary-color); 
+    text-decoration: none; 
+}
 
 #hero-text #welcome-msg {
     font-size: 1.1em;
@@ -728,62 +731,6 @@ PROJECTS: DETAILED VIEW
     gap: 10px;
 }
 
-
-
-/*=======================================================================
-PROJECTS: GRID VIEW
-=======================================================================*/
-
-.project-card .action-btns {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr; /* Forces 50/50 split */
-    gap: 15px;
-    width: 100%;
-    margin-top: auto; 
-}
-
-.project-card .btn-project {
-    display: flex !important;
-    justify-content: center;
-    align-items: center;
-    width: 100%; /* Fills the 1fr column */
-}
-
-/* --- DETAILED VIEW: Natural width buttons --- */
-
-
-/* This targets the inner container of the grid cards only */
-.project-card .card-body {
-    padding: 25px; /* Increased from the default 20px for a more spacious feel */
-    display: flex;
-    flex-direction: column;
-    gap: 12px; /* This automatically adds consistent spacing between every element */
-    height: 100%;
-}
-
-/* Ensure the image wrapper doesn't feel cramped against the top */
-.project-card .card-img-wrapper {
-    padding: 10px 10px 0 10px; /* Optional: adds a small gap around the image inside the card */
-}
-
-
-/* Ensure the badges have a bit of breathing room from the description */
-.project-card .mb-3 {
-    margin-top: 10px;
-}
-
-
-
-
-
-
-
-
-
-
-/* --- Detailed View Mode --- */
-
-
 /* Custom Scrollbar for selector */
 .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
 
@@ -791,6 +738,7 @@ PROJECTS: GRID VIEW
     background: rgba(255, 255, 255, 0.05); 
     border-radius: 10px; 
 }
+
 .custom-scrollbar::-webkit-scrollbar-thumb { 
     background: rgba(255, 255, 255, 0.2); 
     border-radius: 10px;
@@ -798,8 +746,9 @@ PROJECTS: GRID VIEW
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: var(--primary-color); }
 
+/* Tiles of the side panel */
 .project-tile {
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 12px;
     padding: 12px;
@@ -811,16 +760,17 @@ PROJECTS: GRID VIEW
 }
 
 .project-tile:hover {
-    background: rgba(255, 255, 255, 0.06);
+    background: rgba(255, 255, 255, 0.05);
     transform: translateX(5px);
 }
 
 .project-tile.active {
     border-color: var(--primary-color);
-    background: rgba(var(--primary-rgb), 0.1);
+    background: rgba(0, 0, 0, 0.1);
     border-left: 4px solid var(--primary-color);
 }
 
+/* Images of the side panel i.e thumbnails */
 .tile-img {
     width: 60px;
     height: 60px;
@@ -831,9 +781,9 @@ PROJECTS: GRID VIEW
 .tile-info h5 {
     font-size: 1rem;
     margin: 0 0 5px 0;
-    color: #fff;
 }
 
+/* Major panel on the right */
 .glass-panel {
     background: rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(255, 255, 255, 0.1);
@@ -848,7 +798,7 @@ PROJECTS: GRID VIEW
     height: auto;          
     display: block;        
     max-height: 400px;    
-    object-fit: initial;   
+    object-fit: cover;   
     border-radius: 10px;
     margin-bottom: 20px;
     padding: 3px;
@@ -856,60 +806,115 @@ PROJECTS: GRID VIEW
     box-shadow: 0 5px 20px rgba(var(--primary-color), 0.5); 
 }
 
-/* --- Card Grid View Mode --- */
+
+/*=======================================================================
+PROJECTS: GRID VIEW
+=======================================================================*/
 .project-card {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(255, 255, 255, 0.08); 
+    background: rgba(255, 255, 255, 0.05);
     border-radius: 15px;
     overflow: hidden;
     height: 100%;
     display: flex;
     flex-direction: column;
-    transition: all 0.4s ease;
+    transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), 
+                border-color 0.3s ease, 
+                box-shadow 0.3s ease;
 }
 
 .project-card:hover {
-    transform: translateY(-8px);
-    border-color: rgba(255, 255, 255, 0.3);
+    border-color: rgba(0, 255, 255, 0.5);
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
 }
 
-.card-img-wrapper {
+/* 1. The Inset Image Wrapper */
+.project-card .card-img-wrapper {
+    line-height: 0;
+    font-size: 0;
+    padding: 15px 15px 0 15px; 
+    height: 200px; 
     overflow: hidden;
-    height: 180px;
+    background: transparent !important; 
 }
 
-.card-img-wrapper img {
+.project-card .card-img-wrapper img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    display: block;
     transition: transform 0.5s ease;
 }
 
-.project-card:hover .card-img-wrapper img {
-    transform: scale(1.1);
-}
-
-.card-body {
-    padding: 20px;
+/* The Card Body */
+.project-card .card-body {
+    padding: 15px; 
     display: flex;
     flex-direction: column;
+    gap: 10px;     
     flex-grow: 1;
 }
 
-.card-body h4 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
+/* Title & Status Group (Responsive Container) */
+.project-card .title-status-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
 }
 
-.card-body p {
+.project-card h4 {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    margin: 0 !important; 
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Description Text */
+.card-description {
     font-size: 0.9rem;
     opacity: 0.8;
-    margin-bottom: 15px;
-    flex-grow: 1;
+    margin-bottom: 5px;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
+/* Footer (Badges & Buttons) */
+.card-footer-content {
+    margin-top: auto; 
+}
 
+.tech-badge-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+.project-card .action-btns {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    width: 100%;
+}
+
+.project-card .btn-project {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    font-size: 0.85rem;
+}
 
 /*=======================================================================
 SKILLS
@@ -1287,7 +1292,6 @@ MOBILE REFINEMENTS (Responsive)
         margin: 70px 0 0 0 !important; 
 
         /* FIX: Stretch to full screen height minus the header */
-        /* Use 100dvh to handle mobile browser address bars */
         min-height: calc(100svh - 70px) !important; 
 
         /* Ensure content starts at the top and grows downward */
@@ -1324,15 +1328,99 @@ MOBILE REFINEMENTS (Responsive)
         max-height: auto;
         padding-bottom: 15px;
     }
-    
-    .project-tile {
-        min-width: 260px;
-        flex-direction: column;
-        align-items: flex-start;
-        text-align: left;
+    .project-card .card-body {
+        padding: 10px !important;
+        min-height: auto !important; 
+        gap: 8px !important;
     }
 
-    .project-tile:hover { transform: translateY(-3px); }
+    /* Reduce the 'Reserved Slots' */
+    .project-card h4, .card-description {
+        min-height: 0 !important; 
+        margin-bottom: 5px !important;
+    }
+
+    /* Tighten the Image */
+    .project-card .card-img-wrapper {
+        height: 160px !important; 
+        padding: 8px 8px 0 8px !important;
+    }
+
+    #project-detail-panel {
+        padding: 10px !important;
+        margin: 0 !important;
+        border-radius: 12px !important;
+    }
+
+    .tile-badges {
+        display: none !important;
+    }
+
+    .badge-wrapper {
+        display: flex !important;
+        justify-content: center !important;
+        width: 100% !important;
+    }
+    
+    .card-footer-content {
+        width: 100% !important;
+        padding: 0 !important;
+        margin-top: 10px !important;
+    }
+
+    /* Make the container a wrapping flexbox that fills the width */
+    .tech-badge-container {
+        display: flex !important;
+        flex-wrap: wrap !important; 
+        justify-content: center !important; 
+        width: 100% !important;
+    }
+
+    /* Title & Badge Centering */
+    #view-detail .title-status-group {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    #view-detail .badge-wrapper {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 15px;
+    }
+
+    /* Description & Hyphenation */
+    .glass-panel p, .glass-panel .project-description {
+        text-align: justify; 
+        hyphens: auto;      
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    /* Action Buttons Resizing */
+    #view-detail .btn-project {
+        padding: 10px 5px !important; 
+        font-size: 0.85rem !important;
+        width: 100%;
+        justify-content: center;
+        border-radius: 8px;
+    }
+
+    #view-detail .btn-project i { font-size: 1.1rem; }
+
+    #project-detail-panel h3 {
+        font-size: 1.1rem !important;
+        text-align: left !important;
+        margin: 0 !important;
+        width: 100%;
+        line-height: 1.2;
+        display: block !important;
+    }
 
     .skill-logo-grid {
         justify-content: center;
@@ -1364,13 +1452,9 @@ MOBILE REFINEMENTS (Responsive)
     }
 
     /* Adjust glass box padding for mobile screens */
-    #resume .glass-box {
-        padding: 25px 15px 40px 15px !important;
-    }
+    #resume .glass-box { padding: 25px 15px 40px 15px !important; }
 
-    .cv-image-container {
-        max-width: 100%;
-    }
+    .cv-image-container { max-width: 100%; }
 
     .cert-link-btn, .cert-link {
         width: 100%; 
@@ -1393,5 +1477,4 @@ MOBILE REFINEMENTS (Responsive)
         background: var(--primary-color);
         color: black;
     }
-
 }

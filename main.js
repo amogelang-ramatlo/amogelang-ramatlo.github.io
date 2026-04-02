@@ -97,7 +97,7 @@ const ProjectManager = {
         { 
             id: 0, 
             shortTitle: "Professional Digital Portfolio", 
-            title: "Professional Synthesis: A Responsive Portfolio for Data Science and Quantitive Analyst Workflows",
+            title: "Professional Synthesis: A Responsive Portfolio for Data Science and Quantitative Analyst Workflows",
             desc: `A custom-built, responsive web application designed to showcase quantitative research and data science 
             projects. Features a modular JavaScript-driven project filtering system, glass-morphism UI design, and secure 
             serverless contact integration via Web3Forms.`,
@@ -131,7 +131,7 @@ const ProjectManager = {
             title: "Predictive Modelling of Medical Cost Volatility: A Comparative Study of SVM and Neural Network Architectures",
             desc: `An advanced classification study focused on predicting medical cost categories from a 1,000-observation dataset. 
             The project involves a rigorous EDA phase followed by the implementation and hyperparameter tuning of Support Vector 
-            Machines (SVM) and Deep Neural Networks. Model performance was benchmarked using a multi-metric framework including 
+            Machines (SVM) and Neural Networks. Model performance was benchmarked using a multi-metric framework including 
             F1 Score, AUROC, and AUPRC to ensure robust risk stratification.`,
             stack: ["SVM", "Neural Networks", "LaTeX", "R", "Tidyverse"],
             status: "Completed",

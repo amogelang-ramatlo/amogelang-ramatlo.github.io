@@ -138,7 +138,7 @@ const ProjectManager = {
             type: "Machine Learning / Statistical Research",
             img: "images/projects/medical-costs-large.png",
             imgThumb: "images/projects/medical-costs-thumb.png",
-            demoLink: "docs/testing.pdf",
+            demoLink: "docs/predict-medical-costs.pdf",
             githubLink: "https://github.com/amogelang-ramatlo/med-cost-benchmarking"
         }
     ],

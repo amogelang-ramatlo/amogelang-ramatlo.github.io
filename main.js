@@ -148,7 +148,8 @@ const ProjectManager = {
         if (!this.gridList) return;
         this.renderAll();
         this.bindEvents();
-        this.loadDetailView(0);
+        this.loadDetailView(0); 
+        this.switchView('grid'); // Show grid view by default (delete line for otherwise)
     },
 
     cacheDOM() {
